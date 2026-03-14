@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wedding Invitation</title>
+
+<style>
+
+body{
+margin:0;
+font-family: Brush Script MT, serif;
+background:linear-gradient(135deg,#ffe4e9,#fff5f7);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+text-align:center;
+}
+
+/* Floating hearts background */
+
+.hearts{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:-1;
+}
+
+.hearts span{
+position:absolute;
+display:block;
+width:25px;
+height:25px;
+background:#ff4d6d;
+transform:rotate(45deg);
+animation:animate 10s linear infinite;
+}
+
+.hearts span::before,
+.hearts span::after{
+content:"";
+position:absolute;
+width:25px;
+height:25px;
+background:#ff4d6d;
+border-radius:50%;
+}
+
+.hearts span::before{
+top:-12px;
+left:0;
+}
+
+.hearts span::after{
+left:-12px;
+top:0;
+}
+
+@keyframes animate{
+0%{
+transform:translateY(100vh) rotate(45deg);
+opacity:1;
+}
+100%{
+transform:translateY(-10vh) rotate(45deg);
+opacity:0;
+}
+}
+
+/* Invitation card */
+
+.container{
+padding:20px;
+background:white;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.25);
+}
+
+img{
+width:320px;
+height:420px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+color:#b23a48;
+margin-top:20px;
+}
+
+h3{
+color:#b23a48;
+margin-top:20px;
+}
+
+p{
+font-size:18px;
+color:#444;
+}
+
+
+button{
+margin-top:15px;
+padding:10px 20px;
+border:none;
+background:EEA6BA;
+color:white;
+border-radius:20px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hearts">
+<span style="left:10%; animation-duration:8s;"></span>
+<span style="left:20%; animation-duration:10s;"></span>
+<span style="left:35%; animation-duration:7s;"></span>
+<span style="left:50%; animation-duration:11s;"></span>
+<span style="left:65%; animation-duration:9s;"></span>
+<span style="left:80%; animation-duration:12s;"></span>
+<span style="left:90%; animation-duration:8s;"></span>
+</div>
+
+<div class="container">
+
+<img id="slide" src="lalu.jpeg">
+
+<h1>Chilamakur Lalu ❤️ Noor - e -ayyen </h1>
+<h3>Nikkaha</h3>
+<p>Wedding Invitation</p>
+<p>29 March 2026 | 11:30 pn</p>
+
+<button onclick="toggleMusic()">Play / Pause Music</button>
+
+</div>
+
+<audio id="music" loop>
+<source src="prema.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+let images = [
+"lalu.jpeg",
+"lalu2.jpeg",
+"lalu3.jpeg",
+"llll.jpg"
+];
+
+let index = 0;
+
+function slideshow(){
+index++;
+
+if(index >= images.length){
+index = 0;
+}
+
+document.getElementById("slide").src = images[index];
+}
+
+setInterval(slideshow,3000);
+
+function toggleMusic(){
+let music = document.getElementById("music");
+
+if(music.paused){
+music.play();
+}else{
+music.pause();
+}
+}
+
+</script>
+
+</body>
+</html>
